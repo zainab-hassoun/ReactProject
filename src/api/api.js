@@ -85,14 +85,31 @@
 // }
 // };
 import axios from "axios";
-const API = 'http://localhost:3006/user';
+const API = 'http://localhost:3006';
 
-export async function addUser(user) {
-try {
-const response = await axios.post(`${API}`, user);
-return response.data;
-} catch (error) {
-console.log(error);
-return null;
-}
-}
+export const addUser = async (user) => {
+    try {
+      const response = await axios.post(`${API}/users`, user);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+};
+export const login = async(email , password ) => {
+    try {
+        const users = await axios.get(`${API}/users`);
+        console.log(users.data);
+        
+
+        if(users.data.email === email && users.data.password === password) {
+            // User found with matching email and password
+            alert("succses");
+            return users.data;
+        } else {
+            // No user found with matching email and password
+            alert('Invalid email or password');
+        }
+    } catch (error) {
+       alert (error);
+    }
+};

@@ -14,13 +14,12 @@
     }
   ],
   "profile": {
-     "name": "typicode"
-      
+    "name": "typicode"
   },
-  "user": {
-    "name":1
-     
- }
-
-
+  "users": {
+    "id": "test",
+    "name": "testsssss",
+    "password": "Am218mw126hy",
+    "email": "test@gmail.com"
+  }
 }
