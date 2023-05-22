@@ -10,15 +10,16 @@ import Login from "./Components/login/Login";
 import Register from "./Components/Register/Register";
 import Loginmanger from "./Components/manger/Loginmanger";
 import Products from "./Components/Shopping/Products";
+// import Addtocart from "./Components/Shopping/addtocart";
 function App() {
   return (
     <Router>
       <Navbar  expand="lg"  >
-        <Navbar.Brand as={Link} to="/">
+        <Navbar.Brand as={Link} to="/" style={{ color:"#c6add8f0",margin:"10px" }}>
          Jewelry 
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
+        <Navbar.Collapse id="basic-navbar-nav" style={{ color:"#8c8a8cf0"}}>
           <Nav className="mr-auto">
             <Nav.Link as={Link} to="/">
               Home
@@ -35,7 +36,9 @@ function App() {
             <Nav.Link as={Link} to="/Session">
               session
             </Nav.Link>
-           
+            {/* <Nav.Link as={Link} to="/Addtocart">
+              Cart
+            </Nav.Link> */}
           </Nav>
         </Navbar.Collapse>
       </Navbar>
@@ -51,7 +54,7 @@ function App() {
         <Route path="/Jewerlymanger/:jewerlymangerId" element={<Jewerlymanger />} />
         <Route path="/Products" element={<Products />} />
         <Route path="/Session" element={<Session />} />
-        {/* <Route path="/Cart" element={<Cart />} /> */}
+        {/* <Route path="/Addtocart" element={<Addtocart />} /> */}
          {/* <Route path="/Jewelry" element={<Jewelry />} /> */}
         {/*<Route path="/Jewelry/add" element={<Add />} />
         <Route path="/Jewelry/:JewelryId" element={<Jewelry />} /> */}

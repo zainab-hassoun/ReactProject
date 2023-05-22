@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate, } from "react-router-dom";
-//import { toast } from "react-toastify";
+import './Register.css';
 import { addUser } from "../../api/api";
 import  api  from "../../api/api";
 const Register = () => {
@@ -78,15 +78,17 @@ console.log(user);
 
   return (
     <div>
-      <div className="offset-lg-3 col-lg-6">
+     
         <form className="container" onSubmit={handleadduser}>
-          <div className="card">
-            <div className="card-header">
-              <h1>User Registeration</h1>
-            </div>
+        
+          
+           
+              <h2>User Registeration</h2>
+              <br/><br/>
+           
             <div className="card-body">
               <div className="row">
-                <div className="col-lg-6">
+                <div className="col-lg-5">
                   <div className="form-group">
                     <label>
                       User Name <span className="errmsg">*</span>
@@ -98,7 +100,7 @@ console.log(user);
                     ></input>
                   </div>
                 </div>
-                <div className="col-lg-6">
+                <div className="col-lg-5">
                   <div className="form-group">
                     <label>
                       Password <span className="errmsg">*</span>
@@ -111,7 +113,7 @@ console.log(user);
                     ></input>
                   </div>
                 </div>{" "}
-                <div className="col-lg-6">
+                <div className="col-lg-5">
                   <div className="form-group">
                     <label>
                       Full Name <span className="errmsg">*</span>
@@ -123,7 +125,7 @@ console.log(user);
                     ></input>
                   </div>
                 </div>
-                <div className="col-lg-6">
+                <div className="col-lg-5">
                   <div className="form-group">
                     <label>
                       Email <span className="errmsg">*</span>
@@ -137,17 +139,19 @@ console.log(user);
                 </div>
               </div>
             </div>
-            <div className="card-footer">
-              <button type="submit" className="btn btn-primary">
+            <div >
+              <button type="submit" className="button-55">
                 Register
               </button>
-              <Link to={"/login"} className="btn btn-danger">
+              {/* 
+              <br/> */}
+              <Link to={"/login"} className="button-55">
                 Close
               </Link>
             </div>
-          </div>
+         
         </form>
-      </div>
+     
     </div>
   );
 };

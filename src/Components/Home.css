@@ -1,0 +1,27 @@
+.flex-container {
+    display: flex;
+    justify-content: space-between; /* או כל מרווח אחר שתרצה */
+  }
+  
+  .design-item {
+    width: 260px;
+  }
+  
+  .design-item .design-img {
+    text-align: center;
+  }
+  h3{
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color:#8c8a8cf0;
+  }
+
+  .design-item {
+    width: 260px;
+    margin-right: 50px;
+    margin:10px;
+  }
+  span{
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 25px;
+    color:#8c8a8cf0;
+  }

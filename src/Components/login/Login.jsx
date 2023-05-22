@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import  api  from "../../api/api";
 import { toast } from "react-toastify";
-
+import './Login.css';
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -52,15 +52,13 @@ useEffect(()=>{
   }
 
   return (
-    <>
-    <Link className="btn btn-success" to={'/Loginmanger'}>New Manger</Link>
-    <div className="row">
-      <div className="offset-lg-6 col-lg-6" style={{ margin: '80px', width: '450px' }}>
+    <div className="back">
+    <br/>
+    <Link className="button-55" to={'/Loginmanger'} style={{ margin: '5px' }}>New Manger</Link>
+      <div style={{ margin: '80px', width: '400px' }}>
         <form  className="container" onSubmit={handleLogin}>
-          <div className="card">
-            <div className="card-header">
               <h2>User Login</h2>
-            </div>
+              <br/>
             <div className="card-body">
               <div className="form-group">
                 <label>User Name <span className="errmsg">*</span></label>
@@ -71,14 +69,13 @@ useEffect(()=>{
                 <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}  className="form-control"></input>
               </div>
             </div>
-            <div className="card-footer">
-              <button type="submit" className="btn btn-primary">Login</button><br/> <br/>
-              <Link className="btn btn-success" to={'/register'}>New User</Link>
-            </div>
-          </div>
+            <div>
+              <button type="submit" className="button-55" width={'50px'} >Login</button> 
+              <Link className="button-55" to={'/register'}>New User</Link>
+              </div>
         </form>
       </div>
-    </div></>
+    </div>
   );
 }
 
