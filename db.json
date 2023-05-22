@@ -1,25 +1,74 @@
 {
-  "posts": [
+  "users": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "id": "1",
+      "name": "heba",
+      "password": "123",
+      "email": "heba@gmail.com"
+    },
+    {
+      "id": "2",
+      "name": "zainab",
+      "password": "123",
+      "email": "zainabhassoun123@gmail.com"
     }
   ],
-  "comments": [
+  "mangers": [
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "id": "2",
+      "name": "zainab",
+      "password": "123",
+      "email": "zainabhassoun123@gmail.com"
     }
   ],
-  "profile": {
-    "name": "typicode"
-  },
-  "users": {
-    "id": "test",
-    "name": "testsssss",
-    "password": "Am218mw126hy",
-    "email": "test@gmail.com"
-  }
+  "product": [
+    {
+      "name": "Ring",
+      "imageUrl": "https://www.sapphirestudiosdesign.com/wp-content/uploads/2017/09/vienna-gold-lotus-flower-ring-03.jpg",
+      "price": "550",
+      "id": "TOJSEYm"
+    },
+    {
+      "name": "Ring",
+      "imageUrl": "https://i.etsystatic.com/8556953/r/il/943085/1893263580/il_570xN.1893263580_p7w5.jpg",
+      "price": "1000",
+      "id": "vF9_rX2"
+    },
+    {
+      "name": "Ring",
+      "imageUrl": "https://i.etsystatic.com/12552607/r/il/cc48fb/2254236493/il_340x270.2254236493_smiq.jpg",
+      "price": "1300",
+      "id": "-IW4j2w"
+    },
+    {
+      "name": "Ring",
+      "imageUrl": "https://i.etsystatic.com/28645197/r/il/b45679/3334482630/il_1080xN.3334482630_ab9w.jpg",
+      "price": "1000",
+      "id": "bzxuUda"
+    },
+    {
+      "name": "Necklace",
+      "imageUrl": "https://m.media-amazon.com/images/I/619F6h2ITXL._UF1000,1000_QL80_.jpg",
+      "price": "2000",
+      "id": "AnkgEMO"
+    },
+    {
+      "name": "Necklace",
+      "imageUrl": "https://yrstore.b-cdn.net/images/thumbs/0000175_-_600.jpeg",
+      "price": "1200",
+      "id": "5Tm6otn"
+    },
+    {
+      "name": "Nicklace",
+      "imageUrl": "https://image.doba.com/dg8-LOqPNMnOJobe/dspic.webp",
+      "price": "500",
+      "id": "0wcqdvv"
+    },
+    {
+      "name": "Necklace",
+      "imageUrl": "https://i.etsystatic.com/27292922/r/il/9affad/3827537155/il_300x300.3827537155_idb1.jpg",
+      "price": "700",
+      "id": "wvI33H0"
+    }
+  ]
 }

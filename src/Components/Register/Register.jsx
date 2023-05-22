@@ -1,16 +1,14 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useNavigate, } from "react-router-dom";
 //import { toast } from "react-toastify";
 import { addUser } from "../../api/api";
-
+import  api  from "../../api/api";
 const Register = () => {
     const [id, setId] = useState('');
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const navigate = useNavigate();
-
-    
 
   const IsValidate = () => {
     let isproceed = true;
@@ -48,6 +46,8 @@ const Register = () => {
     e.preventDefault()
     const user = { id, name, password, email };
 
+console.log(user);
+   
     try {
       const response = await addUser(user);
       if (response.data != {}) {
@@ -57,22 +57,24 @@ const Register = () => {
     } catch (error) {
       alert("Failed to register user");
     }
-  };
-  //     e.preventDefault();
-  //     let regobj = { id, name, password, email};
-  //     if (IsValidate()) {
-  //     //console.log(regobj);
-  //     fetch("http://localhost:3006/user", {
-  //         method: "POST",
-  //         headers: { 'content-type': 'application/json' },
-  //         body: JSON.stringify(regobj)
-  //     }).then((res) => {
-  //         toast.success('Registered successfully.')
-  //         navigate('/login');
-  //     }).catch((err) => {
-  //         toast.error('Failed :' + err.message);
-  //     });
-  // }
+  
+ 
+  const handleRegister2 = async (user)=>{
+    const response = await api.post("/users",user);
+    return response.data;
+  }
+ 
+};
+    const handleRegister = async (e) => {
+      e.preventDefault();
+     
+    //  users.map((user)=>{
+   
+       
+    //     navigate("/Login");
+    //   }
+    //  })
+     }
 
   return (
     <div>

@@ -1,15 +1,15 @@
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import { Navbar, Nav} from "react-bootstrap";
- import HomePage from "./Components/HomePage";
-// import Jewelry from "./Components/Shopping/Jewelry";
-// import Add from "./Components/manger/Add";
-
+import HomePage from "./Components/HomePage";
+import Jewerlymanger from "./Components/manger/Jewerlymanger";
+import Add from "./Components/manger/Add";
+import JewerlysManger from "./Components/manger/JewerlysManger";
 import About from "./Components/About";
 import Session from "./Components/Session";
 import Login from "./Components/login/Login";
-// import Shoee from "./Components/manger/Shoee";
-// import Cart  from "./Components/Shopping/Cart";
 import Register from "./Components/Register/Register";
+import Loginmanger from "./Components/manger/Loginmanger";
+import Products from "./Components/Shopping/Products";
 function App() {
   return (
     <Router>
@@ -29,21 +29,13 @@ function App() {
             <Nav.Link as={Link} to="/About">
               About
             </Nav.Link>
-            {/* <Nav.Link as={Link} to="/Jewelry">
-              Jewelry Products
+            <Nav.Link as={Link} to="/Products">
+              Products
             </Nav.Link>
-            <Nav.Link as={Link} to="/Jewelry/add">
-              Add Product
-            </Nav.Link> */}
-            {/* <Nav.Link as={Link} to="shoee">
-              Edit
-            </Nav.Link> */}
             <Nav.Link as={Link} to="/Session">
               session
             </Nav.Link>
-            <Nav.Link as={Link} to="/Cart">
-            <i className="bi bi-cart"></i>
-            </Nav.Link>
+           
           </Nav>
         </Navbar.Collapse>
       </Navbar>
@@ -52,15 +44,20 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/Register" element={<Register />} />
+        <Route path="/Loginmanger" element={<Loginmanger />} />
         <Route path="/About" element={<About />} />
-        {/* <Route path="/Shoee" element={<Shoee />} /> */}
+        <Route path="/JewerlysManger" element={<JewerlysManger />} />
+        <Route path="/JewerlysManger/add" element={<Add />} />
+        <Route path="/Jewerlymanger/:jewerlymangerId" element={<Jewerlymanger />} />
+        <Route path="/Products" element={<Products />} />
         <Route path="/Session" element={<Session />} />
         {/* <Route path="/Cart" element={<Cart />} /> */}
-        {/* <Route path="/Jewelry" element={<Jewelry />} />
-        <Route path="/Jewelry/add" element={<Add />} />
+         {/* <Route path="/Jewelry" element={<Jewelry />} /> */}
+        {/*<Route path="/Jewelry/add" element={<Add />} />
         <Route path="/Jewelry/:JewelryId" element={<Jewelry />} /> */}
-      </Routes>
-    </Router>
+     
+    </Routes>
+        </Router>
   );
 }
 

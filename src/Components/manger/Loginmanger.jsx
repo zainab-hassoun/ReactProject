@@ -3,11 +3,11 @@ import { Link, useNavigate } from "react-router-dom";
 import  api  from "../../api/api";
 import { toast } from "react-toastify";
 
-const Login = () => {
+const Loginmanger = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
-const[users,setUsers] = useState([]);
+const[mangers,setMangers] = useState([]);
   useEffect(()=>{
     sessionStorage.clear();
   },[]);
@@ -25,17 +25,17 @@ const[users,setUsers] = useState([]);
     return valid;
   }
 const handleLogin2 = async ()=>{
-  const response = await api.get("/users");
+  const response = await api.get("/mangers");
   return response.data;
 }
 useEffect(()=>{
-  const allusers = async()=>{
-    const users = await handleLogin2();
-    if(users){
-      setUsers(users);
+  const allmangers = async()=>{
+    const mangers = await handleLogin2();
+    if(mangers){
+      setMangers(mangers);
     }
   }
-  allusers();
+  allmangers();
   
 },[]);
 
@@ -43,23 +43,21 @@ useEffect(()=>{
     e.preventDefault();
     // if (!validate()) return;
   
-   users.map((user)=>{
-    if(user.email === username && user.password === password){
+    mangers.map((manger)=>{
+    if(manger.email === username && manger.password === password){
       alert('Logegd in');
-      navigate("/");
+      navigate("/jewerlysManger");
     }
    })
   }
 
   return (
-    <>
-    <Link className="btn btn-success" to={'/Loginmanger'}>New Manger</Link>
     <div className="row">
       <div className="offset-lg-6 col-lg-6" style={{ margin: '80px', width: '450px' }}>
         <form  className="container" onSubmit={handleLogin}>
           <div className="card">
             <div className="card-header">
-              <h2>User Login</h2>
+              <h2>Manger Login</h2>
             </div>
             <div className="card-body">
               <div className="form-group">
@@ -73,13 +71,13 @@ useEffect(()=>{
             </div>
             <div className="card-footer">
               <button type="submit" className="btn btn-primary">Login</button><br/> <br/>
-              <Link className="btn btn-success" to={'/register'}>New User</Link>
+             
             </div>
           </div>
         </form>
       </div>
-    </div></>
+    </div>
   );
 }
 
-export default Login;
+export default Loginmanger;
