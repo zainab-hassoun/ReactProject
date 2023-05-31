@@ -1,79 +1,123 @@
+
 import { useEffect, useState } from 'react';
-import { fetchData} from '../../api/api';
-import { Container, Row, Col, Card, Spinner } from 'react-bootstrap';
+import { fetchData } from '../../api/api';
+import { Row, Col, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import './Product.css';
-const Products= () => {
-  const [jewerlys, setJewerly] = useState([]);
+import api from '../../api/api';
+const Products = () => {
+ 
+  const [jewelries, setJewelries] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [cart, setCart] = useState([]);
+  const fetchCart = async () => {
+    try {
+      const response = await api.get(`/Cart`);
+      setCart(response.data);
+    } catch (error) {
+      console.error("Error fetching cart:", error);
+    }
+  };
   useEffect(() => {
     const getData = async () => {
       const data = await fetchData();
-      setJewerly(data);
+      setJewelries(data);
       setIsLoading(false);
+      fetchCart();
     };
+
     setTimeout(() => {
       getData();
     }, 4000);
   }, []);
+  const Eidjew = async (Id,Name,ImgUrl,Price,Amount) =>{
+       
+    if(Amount==0) {
+        deleteFromCart(id);
+        let  cnt = parseInt(localStorage.getItem('count'));
+                                 cnt--;
+         localStorage.setItem('count', JSON.stringify(cnt));
+    }
+    else{
+       
+      const Jewerly = {
+        id:Id,
+        name:Name,
+        imgUrl:ImgUrl,
+        price:Price,
+        amount:Amount,
+    }
+  
+    const response = await api.post(`/Cart`,Jewerly);
+    console.log(response.data);
+  }
+}
+  const addjew = async(Id,Name,ImgUrl,Price) =>{
+    const find = cart.find(jew => jew .id===Id);
+    if(find!=null){
+        Eidjew(Id,Name,ImgUrl,Price,(find.amount+1));
+    }
+    else{
+    const Jewerly = {
+        id:Id,
+        name:Name,
+        imgUrl:ImgUrl,
+        price:Price,
+        amount:1,
+    
+    }
+    
+    const response = await api.post('/Cart',Jewerly);
+    console.log(response.data);
+    }
+}
 
- async function Editjewerly(jewerly,id)
-  {
-      try{
-      const respone = await axios.put(`${API}/product${id}`,jewerly);
-  return respone.data;
-  }
-  catch(error){
+// const [item, setItem] = useState({ id: 1, name: 'Item', imgUrl: 'image.jpg', price: 10, amount: 0 });
+
+// const Eidjew2 = (id, name, imgUrl, price, newAmount) => {
+//   setItem({ ...item, amount: newAmount });
+// };
+
+
+
+  const editJewelry = async (jewelry, id) => {
+    try {
+      const response = await axios.put(`${API}/product/${id}`, jewelry);
+      return response.data;
+    } catch (error) {
       console.log(error);
-      
-  }
+    }
   };
 
   return (
-   
-    <Container className="d-flex flex-column align-items-center justify-content-center" style={{ minHeight: '50vh' }}>
-      {isLoading ? (
-        <div className="text-center">
-          <Spinner animation="border" role="status">
-            <span className="visually-hidden">Loading...</span>
-          </Spinner>
-          <div>Getting data, please wait...</div>
-        </div>
-      ) : (
-        <>
-  
-          <h1 style={{color:"#8c8a8cf0"}}>Jewelrys</h1>
-          <br/>
-          <Row xs={1} sm={2} md={4} className="mb-4" >
-            {jewerlys.map((jewerly) => (
-              <Col key={jewerly.id} className="mb-4">
-                
-                  <Card.Img variant="top" src={jewerly.imageUrl} style={{  whidth: '500',height: '250px', objectFit: 'cover' }} />
-                  
-                  <Card.Body>
-                  <br/>
-                    <Card.Title style={{color:"#8c8a8cf0",}}>{jewerly.name}</Card.Title>
-                    <br/>
-                    <Card.Text style={{color:"#8c8a8cf0"}}>{jewerly.price}$</Card.Text>
-                    <Card.Text>{jewerly.description}</Card.Text>
-                    <br/>
-                  </Card.Body>
-                  
-                  <span class="text">
-
-                    <Link to={`/addtocart/${jewerly.id}`} className="button-55">Add to cart</Link>
-                    
-                    </span>
-                    
-                  
-                
-              </Col>
-              
-            ))}
-          </Row>
-        </>
-      )}
-    </Container>
+    <>
+      <center>
+        <h1 style={{ color: "#8c8a8cf0" }}>Jewelrys</h1>
+      </center>
+      <br />
+      <Row xs={1} sm={2} md={4} className="mb-4" style={{ padding: "15px" }}>
+        {jewelries.map((jewelry) => (
+          <Col key={jewelry.id} className="mb-4">
+            <Card.Img
+              variant="top"
+              src={jewelry.imageUrl}
+              style={{ width: '500', height: '250px', objectFit: 'cover' }}
+            />
+            <Card.Body>
+              <br />
+              <Card.Title style={{ color: "#8c8a8cf0" }}>{jewelry.name}</Card.Title>
+              <br />
+              <Card.Text style={{ color: "#8c8a8cf0" }}>{jewelry.price}$</Card.Text>
+              <Card.Text>{jewelry.description}</Card.Text>
+              <br />
+            </Card.Body>
+            <span className="text">
+              <button onClick={()=> {addjew(jewelry.id,jewelry.name,jewelry.imageUrl,jewelry.price)}} className="button-55">Add to Cart</button>
+             
+            </span>
+          </Col>
+        ))}
+      </Row>
+    </>
   );
 };
 

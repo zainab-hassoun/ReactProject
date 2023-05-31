@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import  api  from "../../api/api";
 import { toast } from "react-toastify";
-
+import "./Loginmanger.css";
 const Loginmanger = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -55,10 +55,9 @@ useEffect(()=>{
     <div className="row">
       <div className="offset-lg-6 col-lg-6" style={{ margin: '80px', width: '450px' }}>
         <form  className="container" onSubmit={handleLogin}>
-          <div className="card">
-            <div className="card-header">
               <h2>Manger Login</h2>
-            </div>
+            <br/>
+            <br/>
             <div className="card-body">
               <div className="form-group">
                 <label>User Name <span className="errmsg">*</span></label>
@@ -69,11 +68,10 @@ useEffect(()=>{
                 <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}  className="form-control"></input>
               </div>
             </div>
-            <div className="card-footer">
-              <button type="submit" className="btn btn-primary">Login</button><br/> <br/>
+            
+              <button type="submit" className="button-55">Login</button><br/> <br/>
              
-            </div>
-          </div>
+         
         </form>
       </div>
     </div>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { fetchData, } from '../../api/api';
-import { Container, Row, Col, Card, Spinner } from 'react-bootstrap';
+import { fetchData } from '../../api/api';
+import { Row, Col, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const JewerlysManger = () => {
@@ -16,53 +16,35 @@ const JewerlysManger = () => {
       getData();
     }, 4000);
   }, []);
-
- async function Editjewerly(jewerly,id)
-  {
-      try{
-      const respone = await axios.put(`${API}/product${id}`,jewerly);
-  return respone.data;
-  }
-  catch(error){
-      console.log(error);
-      
-  }
-  };
-  return (
-    <Container className="d-flex flex-column align-items-center justify-content-center" style={{ minHeight: '50vh' }}>
-      {isLoading ? (
-        <div className="text-center">
-          <Spinner animation="border" role="status">
-            <span className="visually-hidden">Loading...</span>
-          </Spinner>
-          <div>Getting data, please wait...</div>
-        </div>
-      ) : (
-        <>
   
-          <h1 >Jewerlys</h1>
+  return (
+   
+        <>
+  <center>
+          <h1 style={{ color: "#8c8a8cf0"}}>Jewerlys</h1>
+          </center>
           <Row xs={1} sm={2} md={4} className="mb-4" >
             {jewerlys.map((jewerly) => (
               <Col key={jewerly.id} className="mb-4">
-                <Card >
+               <br/>
                   <Card.Img variant="top" src={jewerly.imageUrl} style={{  whidth: '500',height: '250px', objectFit: 'cover' }} />
                   <Card.Body>
-                    <Card.Title>{jewerly.name}</Card.Title>
+                    <Card.Title style={{ color: "#8c8a8cf0"}}>{jewerly.name}</Card.Title>
+                    <br/>
                     <Card.Text>{jewerly.description}</Card.Text>
+                    <br/>
                   </Card.Body>
-                  <Card.Footer className="d-flex justify-content-between">
-                    <Link to={`/JewerlysManger/add`} className="text-right">Add</Link>
-                    <Link to={`/Jewerly/${jewerly.id}`} className="text-right">Edit</Link>
-                    <Link to={`/Jewerly/${jewerly.id}`} className="text-right">remove</Link>
-                  </Card.Footer>
-                </Card>
+                  
+                    <Link to={`/JewerlysManger/add`} className="Link-55" style={{margin:"10px"}}>Add</Link>
+                    <Link to={`/JewerlyManger/${jewelryId}`} className="Link-55" style={{margin:"10px"}}>Edit</Link>
+                    <Link to={`/Jewerly/${jewerly.id}`} className="Link-55" style={{margin:"10px"}}>remove</Link>
+              
               </Col>
               
             ))}
           </Row>
         </>
-      )}
-    </Container>
+  
   );
 };
 

@@ -10,7 +10,8 @@ import Login from "./Components/login/Login";
 import Register from "./Components/Register/Register";
 import Loginmanger from "./Components/manger/Loginmanger";
 import Products from "./Components/Shopping/Products";
-// import Addtocart from "./Components/Shopping/addtocart";
+import Cart from "./Components/Shopping/Cart";
+
 function App() {
   return (
     <Router>
@@ -30,15 +31,16 @@ function App() {
             <Nav.Link as={Link} to="/About">
               About
             </Nav.Link>
+            
             <Nav.Link as={Link} to="/Products">
               Products
             </Nav.Link>
             <Nav.Link as={Link} to="/Session">
               session
             </Nav.Link>
-            {/* <Nav.Link as={Link} to="/Addtocart">
+            <Nav.Link as={Link} to="/Cart">
               Cart
-            </Nav.Link> */}
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
@@ -53,11 +55,10 @@ function App() {
         <Route path="/JewerlysManger/add" element={<Add />} />
         <Route path="/Jewerlymanger/:jewerlymangerId" element={<Jewerlymanger />} />
         <Route path="/Products" element={<Products />} />
+        <Route path="/Cart" element={<Cart />} />
+         <Route path="/Cart/:id" element={<Cart />} />
         <Route path="/Session" element={<Session />} />
-        {/* <Route path="/Addtocart" element={<Addtocart />} /> */}
-         {/* <Route path="/Jewelry" element={<Jewelry />} /> */}
-        {/*<Route path="/Jewelry/add" element={<Add />} />
-        <Route path="/Jewelry/:JewelryId" element={<Jewelry />} /> */}
+      
      
     </Routes>
         </Router>

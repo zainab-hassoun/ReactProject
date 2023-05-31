@@ -48,7 +48,7 @@ catch(error){
 export const  deletejewerly= async(id)=>{
 {
     try{
-     await axios.delete(`${API}/product${id}`);
+     await axios.delete(`${API}/${id}`);
 return respone.data;
 }
 catch(error){

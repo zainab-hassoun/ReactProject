@@ -20,7 +20,7 @@ const Add = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label>
+      <label style={{ padding:"20px" }}>
          Name:
         <input
           type="text"
@@ -28,8 +28,8 @@ const Add = () => {
           onChange={(event) => setNewProduct({ ...newProduct, name: event.target.value })}
         />
       </label>
-      <br/> <br/>
-      <label>
+     <br/>
+      <label style={{ padding:"20px" }}>
         Image URL:
         <input
           type="text"
@@ -37,8 +37,8 @@ const Add = () => {
           onChange={(event) => setNewProduct({ ...newProduct, imageUrl: event.target.value })}
         />
       </label>
-      <br/> <br/>
-      <label>
+      <br/>
+      <label style={{ padding:"20px" }}>
         Price:
         <input
           type="number"
@@ -46,9 +46,8 @@ const Add = () => {
           onChange={(event) => setNewProduct({ ...newProduct, price: event.target.value })}
         />
       </label>
-     
-      <br/>
-      <button type="submit">Add Product</button>
+      <br/>  
+      <button type="submit" style={{ margin:"20px" }}>Add Product</button>
     </form>
   );
 };
