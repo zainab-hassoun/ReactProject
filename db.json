@@ -100,6 +100,13 @@
       "imgUrl": "https://www.sapphirestudiosdesign.com/wp-content/uploads/2017/09/vienna-gold-lotus-flower-ring-03.jpg",
       "price": "550",
       "amount": 1
+    },
+    {
+      "id": "bzxuUda",
+      "name": "Ring",
+      "imgUrl": "https://i.etsystatic.com/28645197/r/il/b45679/3334482630/il_1080xN.3334482630_ab9w.jpg",
+      "price": "1000",
+      "amount": 2
     }
   ]
 }

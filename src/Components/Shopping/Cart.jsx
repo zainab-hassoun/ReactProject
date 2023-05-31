@@ -77,16 +77,7 @@ const PriceTotal = (PriceT)=>{
       sum+=((Number)(jewelry.price)*(jewelry.amount));
   })
   return sum;
-}
-
-const CountA = (cnt1)=>{
-  let cnt2=0;
-  cnt1.map((jewelry)=>{
-      cnt2+=jewelry.amount;
-  })
-  return cnt2;
- 
-}
+};
 
   return (
 
@@ -113,22 +104,24 @@ const CountA = (cnt1)=>{
                 Delete jewelry
               </button>
               <br /><br />
-              <button className='btn btn-primary ml-2' onClick={()=>Eidjew(item.id, item.name, item.imgUrl, item.price,( item.amount-1))}>
-                -
+                    <div className="mt-3" style={{ display: 'flex', alignItems: 'center' }}>
+              <button className="btn btn-primary ml-2" onClick={() => Eidjew(item.id, item.name, item.imgUrl, item.price, item.amount - 1)}>
+              -
               </button>
-              <Card.Text style={{ color: "#8c8a8cf0" }} >{item.amount}</Card.Text>
-           
-              <button className='btn btn-primary ml-2' onClick={()=>Eidjew(item.id, item.name, item.imgUrl, item.price, (item.amount+1))}>
-                +
+              <Card.Text style={{ color: "#8c8a8cf0", margin: '0 8px' }}>{item.amount}</Card.Text>
+              <button className="btn btn-primary ml-2" onClick={() => Eidjew(item.id, item.name, item.imgUrl, item.price, item.amount + 1)}>
+              +
               </button>
-          
-            {/* <Card.Body>
+              </div>
+
+            <Card.Body>
               <br />
-              <Card.Title style={{ color: "#8c8a8cf0" }}>{CountA}</Card.Title>
+             
+              <Card.Text style={{ color: "#8c8a8cf0" }} onClick={() => {}}>
+  price: ${PriceTotal}
+</Card.Text>
               <br />
-              <Card.Text style={{ color: "#8c8a8cf0" }}>{PriceTotal}$</Card.Text>
-              <br />
-            </Card.Body>   */}
+            </Card.Body>  
             </div> 
           </Col>
         ))}

@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { fetchData } from '../../api/api';
 import { Row, Col, Card } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+
 import api from '../../api/api';
 const Products = () => {
  
@@ -33,6 +33,7 @@ const Products = () => {
        
     if(Amount==0) {
         deleteFromCart(id);
+        console.log("sold out");
         let  cnt = parseInt(localStorage.getItem('count'));
                                  cnt--;
          localStorage.setItem('count', JSON.stringify(cnt));
@@ -71,17 +72,10 @@ const Products = () => {
     }
 }
 
-// const [item, setItem] = useState({ id: 1, name: 'Item', imgUrl: 'image.jpg', price: 10, amount: 0 });
-
-// const Eidjew2 = (id, name, imgUrl, price, newAmount) => {
-//   setItem({ ...item, amount: newAmount });
-// };
-
-
 
   const editJewelry = async (jewelry, id) => {
     try {
-      const response = await axios.put(`${API}/product/${id}`, jewelry);
+      const response = await axios.put(`/product/${id}`, jewelry);
       return response.data;
     } catch (error) {
       console.log(error);
@@ -107,12 +101,12 @@ const Products = () => {
               <Card.Title style={{ color: "#8c8a8cf0" }}>{jewelry.name}</Card.Title>
               <br />
               <Card.Text style={{ color: "#8c8a8cf0" }}>{jewelry.price}$</Card.Text>
-              <Card.Text>{jewelry.description}</Card.Text>
+              
               <br />
+              
             </Card.Body>
             <span className="text">
               <button onClick={()=> {addjew(jewelry.id,jewelry.name,jewelry.imageUrl,jewelry.price)}} className="button-55">Add to Cart</button>
-             
             </span>
           </Col>
         ))}
