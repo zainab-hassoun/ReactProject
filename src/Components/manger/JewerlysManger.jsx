@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { fetchData } from '../../api/api';
 import { Row, Col, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-
+import "./jewelry.css";
 const JewerlysManger = () => {
   const [jewerlys, setJewerly] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -23,9 +23,12 @@ const JewerlysManger = () => {
   <center>
           <h1 style={{ color: "#8c8a8cf0"}}>Jewerlys</h1>
           </center>
+
+          <Link to={`/JewerlysManger/add`} className="Link-55" style={{margin:"10px"}}>Add Product </Link>
           <Row xs={1} sm={2} md={4} className="mb-4" >
-            {jewerlys.map((jewerly) => (
+            {jewerlys.map((jewerly) => ( 
               <Col key={jewerly.id} className="mb-4">
+                 {console.log(jewerly.id)}
                <br/>
                   <Card.Img variant="top" src={jewerly.imageUrl} style={{  whidth: '500',height: '250px', objectFit: 'cover' }} />
                   <Card.Body>
@@ -35,8 +38,8 @@ const JewerlysManger = () => {
                     <br/>
                   </Card.Body>
                   
-                    <Link to={`/JewerlysManger/add`} className="Link-55" style={{margin:"10px"}}>Add</Link>
-                    <Link to={`/JewerlyManger/${jewelryId}`} className="Link-55" style={{margin:"10px"}}>Edit</Link>
+                    <Link to={`/JewerlyManger/${jewerly.id}`} className="Link-55" style={{margin:"10px"}}>Edit</Link>
+                  
                     <Link to={`/Jewerly/${jewerly.id}`} className="Link-55" style={{margin:"10px"}}>remove</Link>
               
               </Col>

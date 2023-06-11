@@ -54,7 +54,7 @@ const Eidjew = async (Id,Name,ImgUrl,Price,Amount) =>{
 
       deleteFromCart(Id);
       let  cnt = parseInt(localStorage.getItem('count'));
-                    cnt--;
+                    //cnt--;
                     console.log(cnt);
        localStorage.setItem('count', JSON.stringify(cnt));
   }
@@ -71,6 +71,13 @@ const Eidjew = async (Id,Name,ImgUrl,Price,Amount) =>{
 }
 
 }
+
+const calculateProductTotalPrice = (price, amount) => {
+  return Number(price) * amount;
+};
+
+
+
 const PriceTotal = (PriceT)=>{
   let sum=0;
   PriceT.map((jewelry)=>{
@@ -116,16 +123,23 @@ const PriceTotal = (PriceT)=>{
 
             <Card.Body>
               <br />
-             
-              <Card.Text style={{ color: "#8c8a8cf0" }} onClick={() => {}}>
-  price: ${PriceTotal}
-</Card.Text>
-              <br />
+              <Card.Body>
+                <br />
+                <Card.Text style={{ color: "#8c8a8cf0" }}>
+                  Price: ${calculateProductTotalPrice(item.price, item.amount)}
+                </Card.Text>
+                <br />
+              </Card.Body>
             </Card.Body>  
             </div> 
+         
           </Col>
         ))}
+         <Card.Text style={{ color: "#8c8a8cf0" }} onClick={() => {}}>
+                Total: ${PriceTotal(cart)}
+                  </Card.Text>
       </Row>
+     
     </div>
     
     

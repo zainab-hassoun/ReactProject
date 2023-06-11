@@ -50,7 +50,7 @@ console.log(user);
    
     try {
       const response = await addUser(user);
-      if (response.data != {}) {
+      if (response.data != {} && user.email != email) {
         alert("User registered successfully");
       }
       navigate("/login");
@@ -59,21 +59,7 @@ console.log(user);
     }
   
  
-  const handleRegister2 = async (user)=>{
-    const response = await api.post("/users",user);
-    return response.data;
-  }
- 
-};
-    const handleRegister = async (e) => {
-      e.preventDefault();
-     
-    //  users.map((user)=>{
-   
-       
-    //     navigate("/Login");
-    //   }
-    //  })
+
      }
 
   return (

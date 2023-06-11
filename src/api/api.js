@@ -77,6 +77,17 @@ export const addUser = async (user) => {
       throw error;
     }
 };
+  
+export const Editjewerly = async (jewelryId, jewelry) => {
+  try {
+    const response = await axios.put(`/product/${jewelryId}`, jewelry);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    throw new Error('Failed to update jewelry');
+  }
+};
+
 export const login = async(email , password ) => {
     try {
         const users = await axios.get(`${API}/users`);
