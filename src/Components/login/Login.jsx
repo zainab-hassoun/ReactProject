@@ -1,25 +1,27 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, createContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import api from "../../api/api";
 import { toast } from "react-toastify";
 import './Login.css';
-
+ 
+export const UserContext = createContext();
+ 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
   const [users, setUsers] = useState([]);
   const [error, setError] = useState('');
-
+ 
   useEffect(() => {
     sessionStorage.clear();
   }, []);
-
+ 
   const handleLogin2 = async () => {
     const response = await api.get("/users");
     return response.data;
   };
-
+ 
   useEffect(() => {
     const getAllUsers = async () => {
       const users = await handleLogin2();
@@ -27,25 +29,29 @@ const Login = () => {
         setUsers(users);
       }
     };
-
+ 
     getAllUsers();
   }, []);
-
+ 
   const handleLogin = (e) => {
     e.preventDefault();
-
+ 
     let isUsernameValid = false;
     let isPasswordValid = false;
-
+    let loggedInUser = null;
+ 
     users.forEach((user) => {
       if (user.email === username) {
         isUsernameValid = true;
         if (user.password === password) {
           isPasswordValid = true;
+          loggedInUser = user;
         }
       }
     });
-
+   
+     
+    
     if (!isUsernameValid) {
       setError('Invalid username');
     } else if (!isPasswordValid) {
@@ -53,23 +59,11 @@ const Login = () => {
     } else {
       setError('');
       console.log('Successful login');
+      localStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
       navigate("/");
     }
   };
-
-  // const validate = () => {
-  //   let valid = true;
-  //   if (!username) {
-  //     valid = false;
-  //     toast.warning('Please enter username');
-  //   }
-  //   if (!password) {
-  //     valid = false;
-  //     toast.warning('Please enter password');
-  //   }
-  //   return valid;
-  // };
-
+ 
   return (
     <div className="back">
       <br/>
@@ -91,12 +85,14 @@ const Login = () => {
           <div>
             {error && <p>{error}</p>}
             <button type="submit" className="button-55" width={'50px'}>Login</button>
-           
-          </div> <Link className="button-55" to={'/register'}>New User</Link>
+          </div>
+          <Link className="button-55" to={'/register'}>New User</Link>
         </form>
       </div>
     </div>
   );
 };
-
+ 
 export default Login;
+
+ 

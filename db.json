@@ -55,20 +55,6 @@
     },
     {
       "name": "Ring",
-      "imageUrl": "https://i.etsystatic.com/8556953/r/il/943085/1893263580/il_570xN.1893263580_p7w5.jpg",
-      "price": "1000",
-      "id": "vF9_rX2",
-      "amount": 10
-    },
-    {
-      "name": "Ring",
-      "imageUrl": "https://i.etsystatic.com/12552607/r/il/cc48fb/2254236493/il_340x270.2254236493_smiq.jpg",
-      "price": "1300",
-      "id": "-IW4j2w",
-      "amount": 10
-    },
-    {
-      "name": "Ring",
       "imageUrl": "https://i.etsystatic.com/28645197/r/il/b45679/3334482630/il_1080xN.3334482630_ab9w.jpg",
       "price": "1000",
       "id": "bzxuUda",
@@ -109,21 +95,7 @@
       "name": "Ring",
       "imgUrl": "https://www.sapphirestudiosdesign.com/wp-content/uploads/2017/09/vienna-gold-lotus-flower-ring-03.jpg",
       "price": "550",
-      "amount": 1
-    },
-    {
-      "id": "vF9_rX2",
-      "name": "Ring",
-      "imgUrl": "https://i.etsystatic.com/8556953/r/il/943085/1893263580/il_570xN.1893263580_p7w5.jpg",
-      "price": "1000",
       "amount": 2
-    },
-    {
-      "id": "-IW4j2w",
-      "name": "Ring",
-      "imgUrl": "https://i.etsystatic.com/12552607/r/il/cc48fb/2254236493/il_340x270.2254236493_smiq.jpg",
-      "price": "1300",
-      "amount": 1
     }
   ]
 }

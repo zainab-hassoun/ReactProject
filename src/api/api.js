@@ -1,27 +1,55 @@
 import axios from "axios";
 const API = 'http://localhost:3006';
+
 export default axios.create({
-  baseURL:"http://localhost:3006/",
-})
+  baseURL: API
+});
 
 export const fetchData = async () => {
-    try {
-      const response = await axios.get(`${API}/product`);
-      return response.data;
-    } catch (error) {
-      console.error('Error fetching data:', error);
-      return null;
+  try {
+    const response = await axios.get(`${API}/product`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    return null;
+  }
+};
+export const fetchDataById = async (jewId) => {
+  try {
+    const response = await axios.get(`${API}/product/${jewId}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching product data:', error);
+    throw new Error('Failed to fetch product data.');
+  }
+};
+
+export const updateData = async (jewId, jew) => {
+  try {
+   
+    const response = await axios.put(`${API}/product/${jewId}`, jew);
+    if (response.status !== 200) {
+      throw new Error('Failed to update product');
     }
-  };
-  export async function getjewerlyById(id){
-    try{
-        const respone=await axios.get(`${API}/product${id}`);
-        return respone.data;
-    }catch(error){
-        console.error('Error fetching data:', error);
-        return null;
-      }
-  };
+    return response.data;
+  } catch (error) {
+    console.error('Failed to update product:', error);
+    throw new Error('Failed to update product.');
+  }
+};
+export const deleteData = async (jewId) => {
+  try {
+    const response = await axios.delete(`${API}/product/${jewId}`);
+    if (response.status !== 200) {
+      throw new Error('Failed to delete product');
+    }
+    return response.data;
+  } catch (error) {
+    throw new Error('Failed to delete product');
+  }
+};
+  
+
 export async function addjewerly(jewerly)
 {
     try{
@@ -34,29 +62,8 @@ catch(error){
 }
 };
 
-export async function Editjewerly(jewerly,id)
-{
-    try{
-    const respone = await axios.put(`${API}/product${id}`,jewerly);
-return respone.data;
-}
-catch(error){
-    console.log(error);
-    
-}
-};
-export const  deletejewerly= async(id)=>{
-{
-    try{
-     await axios.delete(`${API}/${id}`);
-return respone.data;
-}
-catch(error){
-    console.log(error);
-   
-}
-};
-}
+
+
 export async function jewerly(jewerly)
 {
     try{
@@ -78,15 +85,7 @@ export const addUser = async (user) => {
     }
 };
   
-export const Editjewerly = async (jewelryId, jewelry) => {
-  try {
-    const response = await axios.put(`/product/${jewelryId}`, jewelry);
-    return response.data;
-  } catch (error) {
-    console.log(error);
-    throw new Error('Failed to update jewelry');
-  }
-};
+
 
 export const login = async(email , password ) => {
     try {

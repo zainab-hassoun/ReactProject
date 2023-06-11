@@ -11,7 +11,6 @@ import Register from "./Components/Register/Register";
 import Loginmanger from "./Components/manger/Loginmanger";
 import Products from "./Components/Shopping/Products";
 import Cart from "./Components/Shopping/Cart";
-
 function App() {
   return (
     <Router>
@@ -28,6 +27,8 @@ function App() {
             <Nav.Link as={Link} to="/Login">
              Login
             </Nav.Link>
+            
+
             <Nav.Link as={Link} to="/About">
               About
             </Nav.Link>

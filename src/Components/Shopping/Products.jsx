@@ -35,7 +35,7 @@ const Products = () => {
         deleteFromCart(id);
         console.log("sold out");
         let  cnt = parseInt(localStorage.getItem('count'));
-                                 cnt--;
+                                 //cnt--;
          localStorage.setItem('count', JSON.stringify(cnt));
     }
     else{
@@ -73,14 +73,14 @@ const Products = () => {
 }
 
 
-  const editJewelry = async (jewelry, id) => {
-    try {
-      const response = await axios.put(`/product/${id}`, jewelry);
-      return response.data;
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const editJewelry = async (jewelry, id) => {
+  //   try {
+  //     const response = await axios.put(`/product/${id}`, jewelry);
+  //     return response.data;
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   return (
     <>
@@ -111,6 +111,7 @@ const Products = () => {
           </Col>
         ))}
       </Row>
+    
     </>
   );
 };

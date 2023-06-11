@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { createContext, useState, useEffect } from "react";
 import api from "../../api/api";
 import { useNavigate } from "react-router-dom";
-
+import { Link} from 'react-router-dom';
 import { Row, Col ,Card} from 'react-bootstrap';
 // import Products from "./Components/Shopping/Products";
 export const CartContext = createContext();
@@ -54,7 +54,7 @@ const Eidjew = async (Id,Name,ImgUrl,Price,Amount) =>{
 
       deleteFromCart(Id);
       let  cnt = parseInt(localStorage.getItem('count'));
-                    //cnt--;
+                  
                     console.log(cnt);
        localStorage.setItem('count', JSON.stringify(cnt));
   }
@@ -75,6 +75,17 @@ const Eidjew = async (Id,Name,ImgUrl,Price,Amount) =>{
 const calculateProductTotalPrice = (price, amount) => {
   return Number(price) * amount;
 };
+
+const updateProductQuantity = async () => {
+  try {
+    const updatePromises = cart.map(item => updateData(item.id, { amount: item.amount }));
+    await Promise.all(updatePromises);
+    navigate("/Products"); // Redirect to the payment page after updating quantities
+  } catch (error) {
+    console.error("Failed to update product quantity:", error);
+  }
+};
+
 
 
 
@@ -135,9 +146,15 @@ const PriceTotal = (PriceT)=>{
          
           </Col>
         ))}
+
          <Card.Text style={{ color: "#8c8a8cf0" }} onClick={() => {}}>
                 Total: ${PriceTotal(cart)}
                   </Card.Text>
+                  <Link className="button-55" to={'/Products'} style={{width:90}} onClick={updateProductQuantity}>
+  Payment
+</Link>
+
+         
       </Row>
      
     </div>
