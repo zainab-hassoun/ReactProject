@@ -1,115 +1,129 @@
 import axios from "axios";
 const API = 'http://localhost:3006';
 
-export default axios.create({
+const apiClient = axios.create({
   baseURL: API
 });
 
-export const fetchData = async () => {
+const api = API;
+export {api};
+export const fetchProductData = async () => {
   try {
-    const response = await axios.get(`${API}/product`);
+    const response = await apiClient.get(`/product`);
     return response.data;
   } catch (error) {
     console.error('Error fetching data:', error);
     return null;
   }
 };
-export const fetchDataById = async (jewId) => {
+
+export const fetchProductDataById = async (productId) => {
   try {
-    const response = await axios.get(`${API}/product/${jewId}`);
+    const response = await apiClient.get(`/product/${productId}`);
     return response.data;
   } catch (error) {
     console.error('Error fetching product data:', error);
-    throw new Error('Failed to fetch product data.');
+    return null;
   }
 };
 
-export const updateData = async (jewId, jew) => {
+export const updateProductData = async (productId, newProductData) => {
   try {
-   
-    const response = await axios.put(`${API}/product/${jewId}`, jew);
-    if (response.status !== 200) {
-      throw new Error('Failed to update product');
-    }
+    const response = await apiClient.put(`/product/${productId}`, newProductData);
     return response.data;
   } catch (error) {
     console.error('Failed to update product:', error);
-    throw new Error('Failed to update product.');
+    return null;
   }
 };
-export const deleteData = async (jewId) => {
+
+export const deleteProductData = async (productId) => {
   try {
-    const response = await axios.delete(`${API}/product/${jewId}`);
-    if (response.status !== 200) {
-      throw new Error('Failed to delete product');
-    }
+    const response = await apiClient.delete(`/product/${productId}`);
     return response.data;
   } catch (error) {
-    throw new Error('Failed to delete product');
+    console.error('Failed to delete product:', error);
+    return null;
   }
 };
-  
 
-export async function addjewerly(jewerly)
-{
-    try{
-    const respone = await axios.post(`${API}/product`,jewerly);
-return respone.data;
-}
-catch(error){
-    console.log(error);
+export const addProduct = async (newProduct) => {
+  try {
+    const response = await apiClient.post(`/product`, newProduct);
+    return response.data;
+  } catch (error) {
+    console.error('Error adding new product:', error);
     return null;
-}
+  }
 };
 
-
-
-export async function jewerly(jewerly)
-{
-    try{
-    const respone = await axios.get(`${API}/product`,jewerly);
-return respone.data;
-}
-catch(error){
-    console.log(error);
+export const addUser = async (newUser) => {
+  try {
+    const response = await apiClient.post(`/users`, newUser);
+    return response.data;
+  } catch (error) {
+    console.error('Error adding new user:', error);
     return null;
-}
+  }
 };
-export const addUser = async (user) => {
-  console.log("add user",user)
-    try {
-      const response = await axios.post(`${API}/users`, user);
-      return response.data;
-    } catch (error) {
-      throw error;
-    }
-};
-  
 
+export const loginUser = async(email, password) => {
+  try {
+    const response = await apiClient.get(`/users`);
+    const users = response.data;
 
-export const login = async(email , password ) => {
-    try {
-        const users = await axios.get(`${API}/users`);
-        console.log(users.data);
-        
+    const user = users.find(user => user.email === email && user.password === password);
 
-        if(users.data.email === email && users.data.password === password) {
-            // User found with matching email and password
-            alert("succses");
-            return users.data;
-        } else {
-            // No user found with matching email and password
-            alert('Invalid email or password');
-        }
-    } catch (error) {
-       alert (error);
+    if(user) {
+      alert("Success");
+      return user;
+    } else {
+      alert('Invalid email or password');
+      return null;
     }
+  } catch (error) {
+    alert('Error logging in:', error);
+    return null;
+  }
 };
-export const product = async (product) => {
-    try {
-      const response = await axios.get(`${API}/product`, product);
-      return response.data;
-    } catch (error) {
-      throw error;
-    }
+export const fetchCart = async (userId) => {
+  try {
+    const response = await axios.get(`${API}/Cart?userId=${userId}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching cart:', error);
+    return null;
+  }
 };
+
+export const addToCart = async (userId, product) => {
+  try {
+    const cartItem = { ...product, userId };
+    const response = await axios.post(`${API}/Cart`, cartItem);
+    return response.data;
+  } catch (error) {
+    console.error('Error adding to cart:', error);
+    throw new Error('Failed to add to cart.');
+  }
+};
+
+export const deleteFromCart = async (cartItemId) => {
+  try {
+    const response = await axios.delete(`${API}/Cart/${cartItemId}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error deleting from cart:', error);
+    throw new Error('Failed to delete from cart.');
+  }
+};
+
+export const updateCart = async (cartItemId, cartItem) => {
+  try {
+    const response = await axios.put(`${API}/Cart/${cartItemId}`, cartItem);
+    return response.data;
+  } catch (error) {
+    console.error('Error updating cart:', error);
+    throw new Error('Failed to update cart.');
+  }
+};
+

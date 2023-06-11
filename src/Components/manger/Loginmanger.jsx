@@ -1,8 +1,14 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import  api  from "../../api/api";
+
 import { toast } from "react-toastify";
 import "./Loginmanger.css";
+import axios from 'axios';
+
+const api = axios.create({
+  baseURL: 'http://localhost:3006',
+});
+
 const Loginmanger = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');

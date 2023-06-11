@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { fetchDataById, updateData } from '../../api/api';
+import { fetchProductDataById, updateProductData } from '../../api/api';
 import { Form, Button, Alert } from 'react-bootstrap';
 
 const Jewerlymanger = () => {
@@ -13,13 +13,15 @@ const Jewerlymanger = () => {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [isLoading, setIsLoading] = useState(true);
-  const { jewId } = useParams();
-  const navigate = useNavigate();
+  console.log(useParams());
+  const { jewerlymangerId } = useParams();
+  const jewId = jewerlymangerId;
+  let navigate = useNavigate();
 
   useEffect(() => {
     const getData = async () => {
       try {
-        const data = await fetchDataById(jewId);
+        const data = await fetchProductDataById(jewId);
         setJew(data);
         setIsLoading(false);
       } catch (error) {
@@ -36,11 +38,7 @@ const Jewerlymanger = () => {
     e.preventDefault();
 
     try {
-      const updatedJew = Object.fromEntries(
-        Object.entries(jew).filter(([_, value]) => value !== '')
-      );
-
-      await updateData(jewId, updatedJew);
+      await updateProductData(jewId, jew);
       setSuccess('Product updated successfully.');
     } catch (error) {
       console.error('Failed to update product:', error);
@@ -48,51 +46,40 @@ const Jewerlymanger = () => {
     }
   };
 
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <>
-      <h1 className="my-4">Edit Jewelry</h1>
-      {error && <Alert variant="danger">{error}</Alert>}
-      {success && <Alert variant="success">{success}</Alert>}
-      {!isLoading && (
+      <div className="product-manager">
         <Form onSubmit={handleUpdate}>
-          <Form.Group controlId="name">
-            <Form.Label>Name</Form.Label>
-            <Form.Control
-              type="text"
-              value={jew.name}
-              onChange={(e) => setJew({ ...jew, name: e.target.value })}
-            />
+          {error && <Alert variant="danger">{error}</Alert>}
+          {success && <Alert variant="success">{success}</Alert>}
+          <Form.Group>
+            <Form.Label>Jewelry Name</Form.Label>
+            <Form.Control type="text" value={jew.name} onChange={e => setJew({ ...jew, name: e.target.value })} />
           </Form.Group>
 
-          <Form.Group controlId="price">
+          <Form.Group>
             <Form.Label>Price</Form.Label>
-            <Form.Control
-              type="number"
-              value={jew.price}
-              onChange={(e) => setJew({ ...jew, price: parseFloat(e.target.value) })}
-            />
+            <Form.Control type="number" value={jew.price} onChange={e => setJew({ ...jew, price: e.target.value })} />
           </Form.Group>
-          <Form.Group controlId="imageUrl">
+
+          <Form.Group>
             <Form.Label>Image URL</Form.Label>
-            <Form.Control
-              type="text"
-              value={jew.imageUrl}
-              onChange={(e) => setJew({ ...jew, imageUrl: e.target.value })}
-            />
+            <Form.Control type="text" value={jew.imageUrl} onChange={e => setJew({ ...jew, imageUrl: e.target.value })} />
           </Form.Group>
-          <Form.Group controlId="amount">
+
+          <Form.Group>
             <Form.Label>Amount</Form.Label>
-            <Form.Control
-              type="text"
-              value={jew.amount}
-              onChange={(e) => setJew({ ...jew, amount: e.target.value })}
-            />
+            <Form.Control type="number" value={jew.amount} onChange={e => setJew({ ...jew, amount: e.target.value })} />
           </Form.Group>
-          <Button variant="primary" type="submit">
-            Update Jewelry
-          </Button>
+
+          <Button variant="primary" type="submit">Update</Button>
+          <Button variant="danger" onClick={() => navigate(-1)}>Cancel</Button>
         </Form>
-      )}
+      </div>
     </>
   );
 };

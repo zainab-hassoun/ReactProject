@@ -35,6 +35,12 @@
       "name": "aa",
       "password": "123",
       "email": "heba12@gmail.com"
+    },
+    {
+      "id": "bhhh",
+      "name": "kk",
+      "password": "123",
+      "email": "zainabhassoun123@gmail.com"
     }
   ],
   "mangers": [
@@ -87,15 +93,38 @@
       "price": "700",
       "id": "wvI33H0",
       "amount": 10
+    },
+    {
+      "name": "tgf",
+      "imageUrl": "lkjo",
+      "price": 0,
+      "id": "wvwpjNG"
     }
   ],
   "Cart": [
     {
       "id": "TOJSEYm",
+      "userId": "1",
       "name": "Ring",
       "imgUrl": "https://www.sapphirestudiosdesign.com/wp-content/uploads/2017/09/vienna-gold-lotus-flower-ring-03.jpg",
       "price": "550",
       "amount": 2
+    },
+    {
+      "id": "bzxuUda",
+      "name": "Ring",
+      "imgUrl": "https://i.etsystatic.com/28645197/r/il/b45679/3334482630/il_1080xN.3334482630_ab9w.jpg",
+      "price": "1000",
+      "amount": 1,
+      "userId": 1
+    },
+    {
+      "id": "AnkgEMO",
+      "name": "Necklace",
+      "imgUrl": "https://m.media-amazon.com/images/I/619F6h2ITXL._UF1000,1000_QL80_.jpg",
+      "price": "2000",
+      "amount": 1,
+      "userId": 1
     }
   ]
 }

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { fetchData, deleteData } from '../../api/api';
+import { fetchProductData, deleteProductData } from '../../api/api';
 import { Row, Col, Card } from 'react-bootstrap';
 import { Link} from 'react-router-dom';
 import './jewelry.css';
@@ -10,7 +10,7 @@ const JewerlysManger = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const data = await fetchData();
+      const data = await fetchProductData();
       setJewerlys(data);
       setIsLoading(false);
     };
@@ -22,7 +22,7 @@ const JewerlysManger = () => {
 
   const handleDelete = async (jewId) => {
     try {
-      await deleteData(jewId);
+      await deleteProductData(jewId);
       setJewerlys((prevJewerlys) =>
         prevJewerlys.filter((jewerly) => jewerly.id !== jewId)
       );

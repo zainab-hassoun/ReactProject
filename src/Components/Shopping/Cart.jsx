@@ -1,12 +1,16 @@
 import { useParams } from "react-router-dom";
 import { createContext, useState, useEffect } from "react";
-import api from "../../api/api";
 import { useNavigate } from "react-router-dom";
 import { Link} from 'react-router-dom';
+import {updateCart} from '../../api/api';
+import axios from 'axios';
 import { Row, Col ,Card} from 'react-bootstrap';
 // import Products from "./Components/Shopping/Products";
 export const CartContext = createContext();
 
+const api = axios.create({
+  baseURL: 'http://localhost:3006',
+});
 
 const Cart = (props) => {
   const { id } = useParams();
@@ -78,7 +82,7 @@ const calculateProductTotalPrice = (price, amount) => {
 
 const updateProductQuantity = async () => {
   try {
-    const updatePromises = cart.map(item => updateData(item.id, { amount: item.amount }));
+    const updatePromises = cart.map(item => updateCart(item.id, item.amount));
     await Promise.all(updatePromises);
     navigate("/Products"); // Redirect to the payment page after updating quantities
   } catch (error) {

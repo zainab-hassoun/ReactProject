@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { addjewerly} from '../../api/api';
+import { addProduct } from '../../api/api';
 const Add = () => {
   const [newProduct, setNewProduct] = useState({
     name: '',
@@ -9,7 +9,7 @@ const Add = () => {
   });
   const handleSubmit = (event) => {
     event.preventDefault();
-    addjewerly(newProduct);
+    addProduct(newProduct);
     setNewProduct({
       name: '',
       imageUrl: '',
