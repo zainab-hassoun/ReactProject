@@ -54,77 +54,60 @@
   "product": [
     {
       "name": "Ring",
-      "imageUrl": "https://www.sapphirestudiosdesign.com/wp-content/uploads/2017/09/vienna-gold-lotus-flower-ring-03.jpg",
+      "imgUrl": "https://www.moissaniteco.com/cache/media/products-media-large/eng132_mainimage_112658.jpg",
       "price": "550",
       "id": "TOJSEYm",
-      "amount": 10
+      "amount": 0
     },
     {
       "name": "Ring",
-      "imageUrl": "https://i.etsystatic.com/28645197/r/il/b45679/3334482630/il_1080xN.3334482630_ab9w.jpg",
+      "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2ghDlkuJqEsRw1iz7W3hZxYlmcYZiyNIyFq-b5yNaIaA9n0WLm_hKDf6boXCmYXkyRV0&usqp=CAU",
       "price": "1000",
       "id": "bzxuUda",
-      "amount": 10
+      "amount": 0
     },
     {
-      "name": "Necklace",
-      "imageUrl": "https://m.media-amazon.com/images/I/619F6h2ITXL._UF1000,1000_QL80_.jpg",
+      "id": "AnkgEM1",
+      "name": "Ring",
+      "imgUrl": "https://i.etsystatic.com/19989599/r/il/a23641/2966562933/il_340x270.2966562933_ast4.jpg",
       "price": "2000",
+      "amount": 10
+    },
+    {
       "id": "AnkgEMO",
+      "name": "Necklace",
+      "imgUrl": "https://blingvine.com/cdn/shop/products/enchanted-necklace-set-necklace-sets-blingvine-301149_1200x.jpg?v=1641410776",
+      "price": "2000",
       "amount": 10
     },
     {
       "name": "Necklace",
-      "imageUrl": "https://yrstore.b-cdn.net/images/thumbs/0000175_-_600.jpeg",
+      "imgUrl": "https://yrstore.b-cdn.net/images/thumbs/0000175_-_600.jpeg",
       "price": "1200",
       "id": "5Tm6otn",
       "amount": 10
     },
     {
+      "id": "AnkgEM2",
       "name": "Necklace",
-      "imageUrl": "https://image.doba.com/dg8-LOqPNMnOJobe/dspic.webp",
-      "price": "500",
-      "id": "0wcqdvv",
+      "imgUrl": "https://i.etsystatic.com/32376090/r/il/423cb6/3608286313/il_340x270.3608286313_k2qr.jpg",
+      "price": "2000",
       "amount": 10
     },
     {
       "name": "Necklace",
-      "imageUrl": "https://i.etsystatic.com/27292922/r/il/9affad/3827537155/il_300x300.3827537155_idb1.jpg",
+      "imgUrl": "https://image.doba.com/dg8-LOqPNMnOJobe/dspic.webp",
+      "price": "500",
+      "id": "0wcqdvv",
+      "amount": 9
+    },
+    {
+      "name": "Necklace",
+      "imgUrl": "https://i.etsystatic.com/27292922/r/il/9affad/3827537155/il_300x300.3827537155_idb1.jpg",
       "price": "700",
       "id": "wvI33H0",
       "amount": 10
-    },
-    {
-      "name": "tgf",
-      "imageUrl": "lkjo",
-      "price": 0,
-      "id": "wvwpjNG"
     }
   ],
-  "Cart": [
-    {
-      "id": "TOJSEYm",
-      "userId": "1",
-      "name": "Ring",
-      "imgUrl": "https://www.sapphirestudiosdesign.com/wp-content/uploads/2017/09/vienna-gold-lotus-flower-ring-03.jpg",
-      "price": "550",
-      "amount": 2
-    },
-    {
-      "id": "bzxuUda",
-      "name": "Ring",
-      "imgUrl": "https://i.etsystatic.com/28645197/r/il/b45679/3334482630/il_1080xN.3334482630_ab9w.jpg",
-      "price": "1000",
-      "amount": 1,
-      "userId": 1
-    },
-    {
-      "id": "AnkgEMO",
-      "name": "Necklace",
-      "imgUrl": "https://m.media-amazon.com/images/I/619F6h2ITXL._UF1000,1000_QL80_.jpg",
-      "price": "2000",
-      "amount": 1,
-      "userId": 1
-    }
-  ]
+  "Cart": []
 }

@@ -3,7 +3,7 @@ import { addProduct } from '../../api/api';
 const Add = () => {
   const [newProduct, setNewProduct] = useState({
     name: '',
-    imageUrl: '',
+    imgUrl: '',
     price: 0,
    
   });
@@ -12,7 +12,7 @@ const Add = () => {
     addProduct(newProduct);
     setNewProduct({
       name: '',
-      imageUrl: '',
+      imgUrl: '',
       price: 0,
       
     });
@@ -33,7 +33,7 @@ const Add = () => {
         Image URL:
         <input
           type="text"
-          value={newProduct.imageUrl}
+          value={newProduct.imgUrl}
           onChange={(event) => setNewProduct({ ...newProduct, imageUrl: event.target.value })}
         />
       </label>
@@ -47,6 +47,14 @@ const Add = () => {
         />
       </label>
       <br/>  
+      <label style={{ padding:"20px" }}>
+        Amount:
+        <input
+          type="number"
+          value={newProduct.amount}
+          onChange={(event) => setNewProduct({ ...newProduct, amount: event.target.value })}
+        />
+      </label>
       <button type="submit" style={{ margin:"20px" }}>Add Product</button>
     </form>
   );

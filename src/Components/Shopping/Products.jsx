@@ -16,6 +16,7 @@ const Products = () => {
     const getData = async () => {
       const data = await fetchProductData();
       setJewelries(data);
+      
       setIsLoading(false);
       fetchCartData();
     };
@@ -23,12 +24,21 @@ const Products = () => {
     setTimeout(() => {
       getData();
     }, 4000);
+    
   }, []);
 
   const addjew = async (Id, Name, ImgUrl, Price) => {
     const find = cart.find(jew => jew.id === Id);
     if (find != null) {
-      const updatedCart = await addToCart(1, { id: Id, name: Name, imgUrl: ImgUrl, price: Price, amount: find.amount + 1 }); // Pass the user ID
+      let am = find.amount +1;
+      const product = {
+        id: Id, 
+        name: Name, 
+        imgUrl: ImgUrl, 
+        price: Price, 
+        amount:am
+      }
+      const updatedCart = await addToCart(1, product); // Pass the user ID
       setCart(updatedCart);
     }
     else {
@@ -48,7 +58,7 @@ const Products = () => {
           <Col key={jewelry.id} className="mb-4">
             <Card.Img
               variant="top"
-              src={jewelry.imageUrl}
+              src={jewelry.imgUrl}
               style={{ width: '500', height: '250px', objectFit: 'cover' }}
             />
             <Card.Body>
@@ -61,7 +71,7 @@ const Products = () => {
               
             </Card.Body>
             <span className="text">
-              <button onClick={() => { addjew(jewelry.id, jewelry.name, jewelry.imageUrl, jewelry.price) }} className="button-55">Add to Cart</button>
+              <button onClick={() => { addjew(jewelry.id, jewelry.name, jewelry.imgUrl, jewelry.price) }} className="button-55">Add to Cart</button>
             </span>
           </Col>
         ))}

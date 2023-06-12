@@ -9,7 +9,7 @@ const api = API;
 export {api};
 export const fetchProductData = async () => {
   try {
-    const response = await apiClient.get(`/product`);
+    const response = await axios.get(`${API}/product`);
     return response.data;
   } catch (error) {
     console.error('Error fetching data:', error);
@@ -98,8 +98,9 @@ export const fetchCart = async (userId) => {
 
 export const addToCart = async (userId, product) => {
   try {
-    const cartItem = { ...product, userId };
-    const response = await axios.post(`${API}/Cart`, cartItem);
+    //const cartItem = { ...product, userId };
+    console.log(product)
+    const response = await axios.post(`${API}/Cart/`, product);
     return response.data;
   } catch (error) {
     console.error('Error adding to cart:', error);
@@ -116,10 +117,44 @@ export const deleteFromCart = async (cartItemId) => {
     throw new Error('Failed to delete from cart.');
   }
 };
-
-export const updateCart = async (cartItemId, cartItem) => {
+export const Jewname= async (nameJew,diff) =>{
+  const response = await axios.get(`${API}/Cart`);
+  const allProducts = response.data;
+  let id=null;
+  allProducts.map(async (pr)=>{
+    if(pr.name===nameJew){
+        id = pr.id;
+        let update = pr.amount-diff;
+      
+      const updatesProduct = {
+        name:pr.name,
+        imgUrl:pr.imgUrl,
+        price:pr.price,
+        id:pr.id,
+        amount:update
+      }
+      const response = await axios.put(`${API}/Cart/${pr.id}`, updatesProduct);
+      return;
+    }
+        
+  });
+ 
+  
+};
+export const updateCart = async (cartItemId, amount,name) => {
   try {
-    const response = await axios.put(`${API}/Cart/${cartItemId}`, cartItem);
+   //item.id, item.amount, item.name
+    Jewname(name,amount);
+    const response1 = await axios.get(`${API}/product/${cartItemId}`);
+    const pr = response1.data;
+    const updatesProduct = {
+      name:pr.name,
+      imgUrl:pr.imgUrl,
+      price:pr.price,
+      id:pr.id,
+      amount:(pr.amount-amount)
+    }
+    const response = await axios.put(`${API}/product/${cartItemId}`, updatesProduct);
     return response.data;
   } catch (error) {
     console.error('Error updating cart:', error);
